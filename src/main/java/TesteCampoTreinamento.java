@@ -1,6 +1,3 @@
-
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import io.opentelemetry.exporter.logging.SystemOutLogExporter;
+
 
 
 public class TesteCampoTreinamento {
@@ -97,6 +94,9 @@ public class TesteCampoTreinamento {
 		driver.manage().window().setSize(new Dimension(1200, 765));
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
 		driver.findElement(By.linkText("Voltar")).click();
+		
+		Assert.assertEquals("Voltou!", driver.findElement(By.id("resultado")).getText());
+		driver.quit();
 	
 	}
 	
@@ -113,9 +113,9 @@ public class TesteCampoTreinamento {
 				driver.findElement(By.tagName("h3")).getText());
 		
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", 
-				driver.findElement(By.tagName("span")).getText());
+				driver.findElement(By.className("facilAchar")).getText());
 		
 		
-		driver.quit();
+	//	driver.quit();
 	}
 }
